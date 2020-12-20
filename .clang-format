@@ -1,0 +1,15 @@
+---
+BasedOnStyle: Mozilla
+AlignAfterOpenBracket: AlwaysBreak
+AlignConsecutiveMacros: 'true'
+AlignEscapedNewlines: Left
+ColumnLimit: '110'
+Cpp11BracedListStyle: 'true'
+IncludeBlocks: Regroup
+IndentWidth: '4'
+KeepEmptyLinesAtTheStartOfBlocks: 'false'
+Language: Cpp
+TabWidth: '4'
+UseTab: ForIndentation
+
+...
