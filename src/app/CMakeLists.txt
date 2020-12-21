@@ -1,2 +1,2 @@
-add_executable(appname app.cpp)
-target_compile_features(appname PRIVATE cxx_std_17)
+add_executable(rtweek main.cpp)
+target_compile_features(rtweek PRIVATE cxx_std_17)
