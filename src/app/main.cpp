@@ -12,6 +12,7 @@ main()
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n" << max_color << "\n";
 
 	for (auto y = 0; y < image_height; y++) {
+		std::cerr << "Processing line " << y + 1 << " over " << image_height << "\n";
 		for (auto x = 0; x < image_width; x++) {
 			const auto r = static_cast<int>(static_cast<double>(x) / image_width * max_color);
 			const auto g = static_cast<int>(static_cast<double>(y) / image_height * max_color);
