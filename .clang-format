@@ -1,4 +1,3 @@
----
 BasedOnStyle: Mozilla
 AlignAfterOpenBracket: AlwaysBreak
 AlignConsecutiveMacros: 'true'
@@ -11,5 +10,3 @@ KeepEmptyLinesAtTheStartOfBlocks: 'false'
 Language: Cpp
 TabWidth: '4'
 UseTab: ForIndentation
-
-...
