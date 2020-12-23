@@ -16,7 +16,13 @@ class Color {
   public:
 	Color();
 	Color(double r, double g, double b);
+
+	Color operator+(const Color& color);
+	Color operator+(double t) const;
+	Color operator*(double t) const;
 };
+
+Color operator*(double t, const Color& color);
 
 std::ostream& operator<<(std::ostream& os, const Color& color);
 
