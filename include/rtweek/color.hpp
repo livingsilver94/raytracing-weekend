@@ -4,21 +4,22 @@
 #include <ostream>
 
 namespace rtweek {
+
 const auto MAX_COLOR = 255;
 
-class Color
-{
+class Color {
   public:
-	double red = 0;
+	double red   = 0;
 	double green = 0;
-	double blue = 0;
+	double blue  = 0;
 
   public:
-	Color() = default;
+	Color();
 	Color(double r, double g, double b);
 };
 
-std::ostream&
-operator<<(std::ostream& os, const Color& color);
-}
+std::ostream& operator<<(std::ostream& os, const Color& color);
+
+}  // namespace rtweek
+
 #endif
