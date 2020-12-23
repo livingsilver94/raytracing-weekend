@@ -17,7 +17,7 @@ int main() {
 			  static_cast<double>(x) / image_width,
 			  static_cast<double>(y) / image_height,
 			  0.25);
-			std::cout << color;
+			std::cout << color << '\n';
 		}
 	}
 }
