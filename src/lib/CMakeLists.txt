@@ -12,3 +12,6 @@ if (MSVC)
 else()
     target_compile_options(librtweek PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
+
+# Unset the default "lib" prefix, otherwise we'll get "liblibrtweek.a".
+set_target_properties(librtweek PROPERTIES PREFIX "")
