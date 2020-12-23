@@ -4,8 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 
-using rtweek::Vec3;
-
+namespace rtweek {
 Vec3::Vec3(double _x, double _y, double _z)
   : x{_x}
   , y{_y}
@@ -78,4 +77,5 @@ double
 Vec3::len() const
 {
 	return std::sqrt(this->len_squared());
+}
 }
