@@ -6,3 +6,9 @@ add_library(librtweek
 
 target_include_directories(librtweek PUBLIC ${CMAKE_SOURCE_DIR}/include)
 target_compile_features(librtweek PUBLIC cxx_std_17)
+
+if (MSVC)
+    target_compile_options(librtweek PRIVATE /W4 /WX)
+else()
+    target_compile_options(librtweek PRIVATE -Wall -Wextra -pedantic -Werror)
+endif()
