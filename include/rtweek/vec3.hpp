@@ -16,13 +16,25 @@ class Vec3 {
 	Vec3 operator-() const;
 	double operator[](int i) const;
 	double& operator[](int i);
+	Vec3 operator+(const Vec3& v) const;
+	Vec3 operator-(const Vec3& v) const;
+	Vec3 operator*(const Vec3& v) const;
+	Vec3 operator*(double t) const;
+	Vec3 operator/(double t) const;
 	Vec3& operator+=(const Vec3& vec3);
 	Vec3& operator*=(const Vec3& vec3);
 	Vec3& operator/=(const Vec3& vec3);
 
+	double dot(const Vec3& v) const;
+	Vec3 cross(const Vec3& v) const;
+
+	Vec3 unit() const;
+
 	double len() const;
 	double len_squared() const;
 };
+
+Vec3 operator*(double t, const Vec3& u);
 
 }  // namespace rtweek
 
