@@ -19,6 +19,6 @@ class Color
 };
 
 std::ostream&
-operator<<(std::ostream& os, rtweek::Color const& color);
+operator<<(std::ostream& os, const Color& color);
 }
 #endif
