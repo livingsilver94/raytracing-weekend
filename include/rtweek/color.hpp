@@ -5,7 +5,7 @@
 
 namespace rtweek {
 
-const auto MAX_COLOR = 255;
+const auto max_color = 255;
 
 class Color {
   public:

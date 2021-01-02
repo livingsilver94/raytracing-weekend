@@ -23,8 +23,8 @@ Color operator*(double t, const Color& color) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Color& color) {
-	os << static_cast<int>(color.red * MAX_COLOR) << ' ' << static_cast<int>(color.green * MAX_COLOR) << ' '
-	   << static_cast<int>(color.blue * MAX_COLOR);
+	os << static_cast<int>(color.red * max_color) << ' ' << static_cast<int>(color.green * max_color) << ' '
+	   << static_cast<int>(color.blue * max_color);
 	return os;
 }
 
