@@ -24,7 +24,7 @@ rtweek::Color sky_color(const rtweek::Ray& ray) {
 		return rtweek::Color(1, 0, 0);
 	}
 	const auto t = 0.5 * (ray.direction.unit().y + 1.0);
-	return (1.0 - t) * rtweek::Color(0.5, 0.7, 1.0) + t * rtweek::Color(1.0, 1.0, 1.0);
+	return (1.0 - t) * rtweek::Color(1.0, 1.0, 1.0) + t * rtweek::Color(0.5, 0.7, 1.0);
 }
 
 int main() {
@@ -45,8 +45,8 @@ int main() {
 	// Print PPM header.
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n" << rtweek::max_color << "\n";
 
-	for (auto y = 0; y < image_height; y++) {
-		std::cerr << "Processing line " << y + 1 << " over " << image_height << '\n';
+	for (auto y = image_height; y > 0; y--) {
+		std::cerr << "Processing line " << image_height - y + 1 << " over " << image_height << '\n';
 		for (auto x = 0; x < image_width; x++) {
 			const auto u = static_cast<double>(x) / image_width;
 			const auto v = static_cast<double>(y) / image_height;
