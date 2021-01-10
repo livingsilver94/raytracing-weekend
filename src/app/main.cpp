@@ -6,18 +6,16 @@
 #include "rtweek/vec3.hpp"
 
 double hit_sphere_factor(const rtweek::Vec3& center, double radius, const rtweek::Ray& r) {
-	const auto vec_square = [](const rtweek::Vec3& vec) { return vec.dot(vec); };
-
-	const auto oc    = r.origin - center;
-	const auto a     = vec_square(r.direction);
-	const auto b     = 2.0 * oc.dot(r.direction);
-	const auto c     = vec_square(oc) - radius * radius;
-	const auto discr = b * b - 4 * a * c;
+	const auto oc     = r.origin - center;
+	const auto a      = r.direction.len_squared();
+	const auto half_b = oc.dot(r.direction);
+	const auto c      = oc.len_squared() - radius * radius;
+	const auto discr  = half_b * half_b - a * c;
 
 	if (discr < 0) {
 		return -1.0;
 	}
-	return (-b - std::sqrt(discr)) / (2.0 * a);
+	return (-half_b - std::sqrt(discr)) / a;
 }
 
 rtweek::Color colorize(const rtweek::Ray& ray) {
