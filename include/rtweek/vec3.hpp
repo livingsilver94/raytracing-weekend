@@ -36,6 +36,8 @@ class Vec3 {
 
 Vec3 operator*(double t, const Vec3& u);
 
+const auto origin = Vec3(0, 0, 0);
+
 }  // namespace rtweek
 
 #endif

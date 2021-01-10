@@ -7,8 +7,8 @@ namespace rtweek {
 
 class Ray {
   public:
-	Vec3 origin    = Vec3();
-	Vec3 direction = Vec3();
+	Vec3 origin    = origin;
+	Vec3 direction = origin;
 
   public:
 	Ray();

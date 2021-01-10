@@ -35,13 +35,13 @@ int main() {
 	const auto image_height = static_cast<int>(image_width / aspect_ratio);
 
 	// Camera.
-	const auto viewport_height   = 2.0;
-	const auto viewport_width    = aspect_ratio * viewport_height;
-	const auto focal_length      = 1.0;
-	const auto origin            = rtweek::Vec3(0, 0, 0);
-	const auto horizontal        = rtweek::Vec3(viewport_width, 0, 0);
-	const auto vertical          = rtweek::Vec3(0, viewport_height, 0);
-	const auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - rtweek::Vec3(0, 0, focal_length);
+	const auto viewport_height = 2.0;
+	const auto viewport_width  = aspect_ratio * viewport_height;
+	const auto focal_length    = 1.0;
+	const auto horizontal      = rtweek::Vec3(viewport_width, 0, 0);
+	const auto vertical        = rtweek::Vec3(0, viewport_height, 0);
+	const auto lower_left_corner =
+	  rtweek::origin - horizontal / 2 - vertical / 2 - rtweek::Vec3(0, 0, focal_length);
 
 	// Print PPM header.
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n" << rtweek::max_color << "\n";
@@ -52,7 +52,7 @@ int main() {
 			const auto u = static_cast<double>(x) / (image_width - 1);
 			const auto v = static_cast<double>(y) / (image_height - 1);
 
-			const auto ray   = rtweek::Ray(origin, lower_left_corner + u * horizontal + v * vertical);
+			const auto ray   = rtweek::Ray(rtweek::origin, lower_left_corner + u * horizontal + v * vertical);
 			const auto color = colorize(ray);
 			std::cout << color << '\n';
 		}
