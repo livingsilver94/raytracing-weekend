@@ -4,7 +4,10 @@ add_library(librtweek
             color.cpp
             ${CMAKE_SOURCE_DIR}/include/rtweek/color.hpp
             ray.cpp
-            ${CMAKE_SOURCE_DIR}/include/rtweek/ray.hpp)
+            ${CMAKE_SOURCE_DIR}/include/rtweek/ray.hpp
+            sphere.cpp
+            ${CMAKE_SOURCE_DIR}/include/rtweek/sphere.hpp
+            ${CMAKE_SOURCE_DIR}/include/rtweek/hit.hpp)
 
 target_include_directories(librtweek PUBLIC ${CMAKE_SOURCE_DIR}/include)
 target_compile_features(librtweek PUBLIC cxx_std_17)

@@ -7,12 +7,12 @@ namespace rtweek {
 
 class Ray {
   public:
-	Vec3 origin    = origin;
-	Vec3 direction = origin;
+	Vec3 origin;
+	Vec3 direction;
 
   public:
 	Ray();
-	Ray(const Vec3& _origin, const Vec3& _direction);
+	Ray(const Vec3& origin, const Vec3& direction);
 
 	Vec3 at(double t) const;
 };

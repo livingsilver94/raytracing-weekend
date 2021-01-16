@@ -5,9 +5,9 @@ namespace rtweek {
 
 class Vec3 {
   public:
-	double x = 0;
-	double y = 0;
-	double z = 0;
+	double x;
+	double y;
+	double z;
 
   public:
 	Vec3();

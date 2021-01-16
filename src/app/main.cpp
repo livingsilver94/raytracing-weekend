@@ -1,27 +1,17 @@
 #include <cmath>
 #include <iostream>
+#include <limits>
 
 #include "rtweek/color.hpp"
 #include "rtweek/ray.hpp"
+#include "rtweek/sphere.hpp"
 #include "rtweek/vec3.hpp"
 
-double hit_sphere_factor(const rtweek::Vec3& center, double radius, const rtweek::Ray& r) {
-	const auto oc     = r.origin - center;
-	const auto a      = r.direction.len_squared();
-	const auto half_b = oc.dot(r.direction);
-	const auto c      = oc.len_squared() - radius * radius;
-	const auto discr  = half_b * half_b - a * c;
-
-	if (discr < 0) {
-		return -1.0;
-	}
-	return (-half_b - std::sqrt(discr)) / a;
-}
-
 rtweek::Color colorize(const rtweek::Ray& ray) {
-	const auto center = rtweek::Vec3(0, 0, -1);
-	if (auto f = hit_sphere_factor(center, 0.50, ray); f > 0) {
-		const auto n = (ray.at(f) - center).unit();
+	const auto sphere = rtweek::Sphere(rtweek::Vec3(0, 0, -1), 0.5);
+
+	if (auto hit = sphere.hit(ray, 0, std::numeric_limits<double>::infinity()); hit.has_value()) {
+		auto n = hit.value().normal;
 		return 0.5 * rtweek::Color(n.x + 1, n.y + 1, n.z + 1);
 	}
 	const auto t = 0.5 * (ray.direction.unit().y + 1.0);
