@@ -5,26 +5,30 @@
 
 namespace rtweek {
 
-const auto max_color = 255;
+constexpr auto max_color = 255;
 
 class Color {
   public:
-	double red   = 0;
-	double green = 0;
-	double blue  = 0;
+	double red;
+	double green;
+	double blue;
 
   public:
-	Color();
-	Color(double r, double g, double b);
+	constexpr Color(double r, double g, double b) : red {r}, green {g}, blue {b} {}
 
-	Color operator+(const Color& color);
-	Color operator+(double t) const;
-	Color operator*(double t) const;
+	constexpr auto operator+(const Color& color) const -> Color {
+		return Color(red + color.red, green + color.green, blue + color.blue);
+	}
+
+	constexpr auto operator+(double t) const -> Color { return Color(red + t, green + t, blue + t); }
+	constexpr auto operator*(double t) const -> Color { return Color(red * t, green * t, blue * t); }
 };
 
-Color operator*(double t, const Color& color);
+constexpr auto operator*(double t, const Color& color) -> Color {
+	return color * t;
+}
 
-std::ostream& operator<<(std::ostream& os, const Color& color);
+auto operator<<(std::ostream& os, const Color& color) -> std::ostream&;
 
 }  // namespace rtweek
 

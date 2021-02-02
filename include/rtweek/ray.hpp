@@ -11,10 +11,11 @@ class Ray {
 	Vec3 direction;
 
   public:
-	Ray();
-	Ray(const Vec3& origin, const Vec3& direction);
+	constexpr Ray(const Vec3& _origin, const Vec3& _direction) : origin {_origin}, direction {_direction} {}
 
-	Vec3 at(double t) const;
+	[[nodiscard]] constexpr auto at(double t) const -> Vec3 {
+		return Vec3(this->origin + this->direction * t);
+	}
 };
 
 }  // namespace rtweek

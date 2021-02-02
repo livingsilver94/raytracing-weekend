@@ -3,7 +3,6 @@ add_library(librtweek
             ${CMAKE_SOURCE_DIR}/include/rtweek/vec3.hpp
             color.cpp
             ${CMAKE_SOURCE_DIR}/include/rtweek/color.hpp
-            ray.cpp
             ${CMAKE_SOURCE_DIR}/include/rtweek/ray.hpp
             sphere.cpp
             ${CMAKE_SOURCE_DIR}/include/rtweek/sphere.hpp

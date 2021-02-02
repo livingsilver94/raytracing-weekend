@@ -4,15 +4,11 @@
 #include <optional>
 
 #include "rtweek/hit.hpp"
-#include "rtweek/vec3.hpp"
+#include "rtweek/ray.hpp"
 
 namespace rtweek {
 
-Sphere::Sphere() = default;
-
-Sphere::Sphere(const Vec3& _center, double _radius) : center {_center}, radius {_radius} {}
-
-std::optional<Hit> Sphere::hit(const Ray& r, double t_min, double t_max) const {
+auto Sphere::hit(const Ray& r, double t_min, double t_max) const -> std::optional<Hit> {
 	const auto oc     = r.origin - this->center;
 	const auto a      = r.direction.len_squared();
 	const auto half_b = oc.dot(r.direction);

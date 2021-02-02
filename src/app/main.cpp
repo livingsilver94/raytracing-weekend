@@ -7,8 +7,8 @@
 #include "rtweek/sphere.hpp"
 #include "rtweek/vec3.hpp"
 
-rtweek::Color colorize(const rtweek::Ray& ray) {
-	const auto sphere = rtweek::Sphere(rtweek::Vec3(0, 0, -1), 0.5);
+auto colorize(const rtweek::Ray& ray) -> rtweek::Color {
+	constexpr auto sphere = rtweek::Sphere(rtweek::Vec3(0, 0, -1), 0.5);
 
 	if (auto hit = sphere.hit(ray, 0, std::numeric_limits<double>::infinity()); hit.has_value()) {
 		auto n = hit.value().normal;
@@ -20,17 +20,17 @@ rtweek::Color colorize(const rtweek::Ray& ray) {
 
 int main() {
 	// Image.
-	const auto aspect_ratio = 16.0 / 9.0;
-	const auto image_width  = 400;
-	const auto image_height = static_cast<int>(image_width / aspect_ratio);
+	constexpr auto aspect_ratio = 16.0 / 9.0;
+	constexpr auto image_width  = 400;
+	constexpr auto image_height = static_cast<int>(image_width / aspect_ratio);
 
 	// Camera.
-	const auto viewport_height = 2.0;
-	const auto viewport_width  = aspect_ratio * viewport_height;
-	const auto focal_length    = 1.0;
-	const auto horizontal      = rtweek::Vec3(viewport_width, 0, 0);
-	const auto vertical        = rtweek::Vec3(0, viewport_height, 0);
-	const auto lower_left_corner =
+	constexpr auto viewport_height = 2.0;
+	constexpr auto viewport_width  = aspect_ratio * viewport_height;
+	constexpr auto focal_length    = 1.0;
+	constexpr auto horizontal      = rtweek::Vec3(viewport_width, 0, 0);
+	constexpr auto vertical        = rtweek::Vec3(0, viewport_height, 0);
+	constexpr auto lower_left_corner =
 	  rtweek::origin - horizontal / 2 - vertical / 2 - rtweek::Vec3(0, 0, focal_length);
 
 	// Print PPM header.

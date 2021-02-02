@@ -1,6 +1,7 @@
 #ifndef RTWEEK_SPHERE_H
 #define RTWEEK_SPHERE_H
 
+#include <cmath>
 #include <optional>
 
 #include "hit.hpp"
@@ -14,12 +15,10 @@ class Sphere : public Hittable {
 	double radius;
 
   public:
-	Sphere();
-	Sphere(const Vec3& center, double radius);
+	constexpr Sphere(const Vec3& _center, double _radius) : center {_center}, radius {_radius} {}
 
-	std::optional<Hit> hit(const Ray& r, double t_min, double t_max) const override;
+	[[nodiscard]] auto hit(const Ray& r, double t_min, double t_max) const -> std::optional<Hit> override;
 };
 
 }  // namespace rtweek
-
 #endif

@@ -16,7 +16,7 @@ struct Hit {
 
 class Hittable {
   public:
-	virtual std::optional<Hit> hit(const Ray& r, double t_min, double t_max) const = 0;
+	[[nodiscard]] virtual auto hit(const Ray& r, double t_min, double t_max) const -> std::optional<Hit> = 0;
 };
 
 }  // namespace rtweek
