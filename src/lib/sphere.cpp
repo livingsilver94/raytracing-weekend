@@ -27,7 +27,7 @@ auto Sphere::hit(const Ray& r, double t_min, double t_max) const -> std::optiona
 			return std::nullopt;
 		}
 	}
-	return std::optional<Hit>({root, r.at(root), (r.at(root) - this->center) / this->radius});
+	return std::optional<Hit>({root, r, (r.at(root) - this->center) / this->radius});
 }
 
 }  // namespace rtweek
