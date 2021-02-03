@@ -6,6 +6,7 @@ add_library(librtweek
             ${CMAKE_SOURCE_DIR}/include/rtweek/ray.hpp
             sphere.cpp
             ${CMAKE_SOURCE_DIR}/include/rtweek/sphere.hpp
+            hit.cpp
             ${CMAKE_SOURCE_DIR}/include/rtweek/hit.hpp)
 
 target_include_directories(librtweek PUBLIC ${CMAKE_SOURCE_DIR}/include)
