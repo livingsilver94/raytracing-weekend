@@ -1,7 +1,7 @@
 # 3.8 is the first release to support C++17.
 cmake_minimum_required(VERSION 3.8)
 
-project(projectname
+project(raytracing-weekend
         VERSION 1.0.0
         DESCRIPTION "C++ project template"
         LANGUAGES CXX)
