@@ -26,9 +26,10 @@ class Vec3 {
   auto operator/=(const Vec3& other) -> Vec3&;
   auto operator/=(double f) -> Vec3&;
 
-  [[nodiscard]] auto length() const -> double;
-  [[nodiscard]] auto length_sq() const -> double;
   [[nodiscard]] auto dot(const Vec3& other) const -> double;
+  [[nodiscard]] auto length_sq() const -> double;
+  [[nodiscard]] auto length() const -> double;
+  [[nodiscard]] auto unit() const -> Vec3;
 };
 } // namespace rtweek
 

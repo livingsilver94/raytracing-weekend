@@ -63,13 +63,16 @@ auto Vec3::operator/=(double f) -> Vec3& {
   return *this;
 }
 
+auto Vec3::dot(const Vec3& other) const -> double {
+  return this->x * other.x + this->y * other.y + this->z * other.z;
+}
 auto Vec3::length() const -> double {
   return std::sqrt(this->length_sq());
 }
 auto Vec3::length_sq() const -> double {
   return this->dot(*this);
 }
-auto Vec3::dot(const Vec3& other) const -> double {
-  return this->x * other.x + this->y * other.y + this->z * other.z;
+auto Vec3::unit() const -> Vec3 {
+  return *this / this->length();
 }
 } // namespace rtweek
