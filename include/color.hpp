@@ -20,6 +20,7 @@ class Color {
   auto operator-(const Color& other) const -> Color;
   auto operator*(double f) const -> Color;
   auto operator/(double f) const -> Color;
+  friend auto operator*(double f, const Color& c) -> Color;
 
   auto operator+=(const Color& other) -> Color&;
   auto operator-=(const Color& other) -> Color&;

@@ -19,6 +19,9 @@ auto Color::operator*(double f) const -> Color {
 auto Color::operator/(double f) const -> Color {
   return Color(this->r / f, this->g / f, this->b / f);
 }
+auto operator*(double f, const Color& c) -> Color {
+  return c * f;
+}
 
 auto Color::operator+=(const Color& other) -> Color& {
   this->r += other.r;
