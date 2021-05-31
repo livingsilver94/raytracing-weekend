@@ -19,11 +19,17 @@ auto Vec3::operator*(const Vec3& other) const -> Vec3 {
 auto Vec3::operator*(double f) const -> Vec3 {
   return Vec3(this->x * f, this->y * f, this->z * f);
 }
+auto operator*(double f, const Vec3& v) -> Vec3 {
+  return v * f;
+}
 auto Vec3::operator/(const Vec3& other) const -> Vec3 {
   return Vec3(this->x / other.x, this->y / other.y, this->z / other.z);
 }
 auto Vec3::operator/(double f) const -> Vec3 {
   return Vec3(this->x / f, this->y / f, this->z / f);
+}
+auto operator/(double f, const Vec3& v) -> Vec3 {
+  return v / f;
 }
 
 auto Vec3::operator+=(const Vec3& other) -> Vec3& {

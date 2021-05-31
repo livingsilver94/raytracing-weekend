@@ -16,8 +16,10 @@ class Vec3 {
   auto operator-(const Vec3& other) const -> Vec3;
   auto operator*(const Vec3& other) const -> Vec3;
   auto operator*(double f) const -> Vec3;
+  friend auto operator*(double f, const Vec3& v) -> Vec3;
   auto operator/(const Vec3& other) const -> Vec3;
   auto operator/(double f) const -> Vec3;
+  friend auto operator/(double f, const Vec3& v) -> Vec3;
 
   auto operator+=(const Vec3& other) -> Vec3&;
   auto operator-=(const Vec3& other) -> Vec3&;
