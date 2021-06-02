@@ -9,14 +9,14 @@
 
 auto hit_sphere(const rtweek::Vec3& center, double radius, const rtweek::Ray& r) -> std::optional<double> {
   const auto oc = r.orig - center;
-  const auto a = r.dir.dot(r.dir);
-  const auto b = 2.0 * oc.dot(r.dir);
-  const auto c = oc.dot(oc) - radius * radius;
-  const auto discriminant = b * b - 4 * a * c;
+  const auto a = r.dir.length_sq();
+  const auto half_b = oc.dot(r.dir);
+  const auto c = oc.length_sq() - radius * radius;
+  const auto discriminant = half_b * half_b - a * c;
   if (discriminant < 0) {
     return std::nullopt;
   }
-  return std::optional((-b - std::sqrt(discriminant)) / (2.0 * a));
+  return std::optional((-half_b - std::sqrt(discriminant)) / a);
 }
 
 auto sky(const rtweek::Ray& r) -> rtweek::Color {
