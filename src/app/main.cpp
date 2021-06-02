@@ -1,20 +1,29 @@
+#include <cmath>
 #include <iostream>
+#include <iterator>
+#include <optional>
 
 #include "color.hpp"
 #include "ray.hpp"
+#include "vec3.hpp"
 
-auto hit_sphere(const rtweek::Vec3& center, double radius, const rtweek::Ray& r) -> bool {
+auto hit_sphere(const rtweek::Vec3& center, double radius, const rtweek::Ray& r) -> std::optional<double> {
   const auto oc = r.orig - center;
   const auto a = r.dir.dot(r.dir);
   const auto b = 2.0 * oc.dot(r.dir);
   const auto c = oc.dot(oc) - radius * radius;
   const auto discriminant = b * b - 4 * a * c;
-  return (discriminant > 0);
+  if (discriminant < 0) {
+    return std::nullopt;
+  }
+  return std::optional((-b - std::sqrt(discriminant)) / (2.0 * a));
 }
 
 auto sky(const rtweek::Ray& r) -> rtweek::Color {
-  if (hit_sphere(rtweek::Vec3(0, 0, -1), 0.5, r)) {
-    return rtweek::Color(1.0, 0, 0);
+  const auto sphere_center = rtweek::Vec3(0, 0, -1);
+  if (const auto v = hit_sphere(sphere_center, 0.5, r); v.has_value()) {
+    const auto norm = (r.at(v.value()) - sphere_center).unit();
+    return 0.5 * rtweek::Color(norm.x + 1, norm.y + 1, norm.z + 1);
   }
   const auto t = 0.5 * (r.dir.unit().y + 1.0);
   return (1.0 - t) * rtweek::Color(1.0, 1.0, 1.0) + t * rtweek::Color(0.5, 0.7, 1.0);
