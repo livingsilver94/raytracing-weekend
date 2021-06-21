@@ -5,6 +5,7 @@ add_library(librtweek
             ${CMAKE_SOURCE_DIR}/include/sphere.hpp
             ${CMAKE_SOURCE_DIR}/include/vec3.hpp
             color.cpp
+            hit.cpp
             sphere.cpp
             ray.cpp
             vec3.cpp)
