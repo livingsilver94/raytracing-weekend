@@ -7,6 +7,17 @@ pub struct Color {
 	pub b: f64,
 }
 
+impl Color {
+	pub fn rgb(&self) -> [u8; 3] {
+		let max = u8::MAX as f64;
+		[
+			(self.r * max) as u8,
+			(self.g * max) as u8,
+			(self.b * max) as u8,
+		]
+	}
+}
+
 impl Neg for Color {
 	type Output = Self;
 	fn neg(self) -> Self::Output {
