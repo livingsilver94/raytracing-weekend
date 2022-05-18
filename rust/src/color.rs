@@ -8,6 +8,9 @@ pub struct Color {
 }
 
 impl Color {
+	pub fn new(r: f64, g: f64, b: f64) -> Self {
+		Self { r, g, b }
+	}
 	pub fn rgb(&self) -> [u8; 3] {
 		let max = u8::MAX as f64;
 		[
@@ -58,6 +61,17 @@ impl Mul for Color {
 			r: self.r * other.r,
 			g: self.g * other.g,
 			b: self.b * other.b,
+		}
+	}
+}
+
+impl Mul<f64> for Color {
+	type Output = Self;
+	fn mul(self, f: f64) -> Self::Output {
+		Self {
+			r: self.r * f,
+			g: self.g * f,
+			b: self.b * f,
 		}
 	}
 }
