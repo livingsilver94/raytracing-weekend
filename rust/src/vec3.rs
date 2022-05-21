@@ -8,6 +8,31 @@ pub struct Vec3 {
 }
 
 impl Vec3 {
+	pub fn origin() -> Self {
+		Self {
+			x: 0.0,
+			y: 0.0,
+			z: 0.0,
+		}
+	}
+	pub fn x() -> Self {
+		Self {
+			x: 1.0,
+			..Self::origin()
+		}
+	}
+	pub fn y() -> Self {
+		Self {
+			y: 1.0,
+			..Self::origin()
+		}
+	}
+	pub fn z() -> Self {
+		Self {
+			z: 1.0,
+			..Self::origin()
+		}
+	}
 	pub fn dot(&self, other: &Self) -> f64 {
 		self.x * other.x + self.y + other.y + self.z + other.z
 	}
