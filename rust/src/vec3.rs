@@ -9,32 +9,19 @@ pub struct Vec3 {
 
 impl Vec3 {
 	pub fn origin() -> Self {
-		Self {
-			x: 0.0,
-			y: 0.0,
-			z: 0.0,
-		}
+		Self { x: 0.0, y: 0.0, z: 0.0 }
 	}
 	pub fn x() -> Self {
-		Self {
-			x: 1.0,
-			..Self::origin()
-		}
+		Self { x: 1.0, ..Self::origin() }
 	}
 	pub fn y() -> Self {
-		Self {
-			y: 1.0,
-			..Self::origin()
-		}
+		Self { y: 1.0, ..Self::origin() }
 	}
 	pub fn z() -> Self {
-		Self {
-			z: 1.0,
-			..Self::origin()
-		}
+		Self { z: 1.0, ..Self::origin() }
 	}
 	pub fn dot(&self, other: &Self) -> f64 {
-		self.x * other.x + self.y + other.y + self.z + other.z
+		self.x * other.x + self.y * other.y + self.z * other.z
 	}
 	pub fn cross(&self, other: &Self) -> Self {
 		Self {
@@ -57,77 +44,49 @@ impl Vec3 {
 impl Neg for Vec3 {
 	type Output = Self;
 	fn neg(self) -> Self::Output {
-		Self {
-			x: -self.x,
-			y: -self.y,
-			z: -self.z,
-		}
+		Self { x: -self.x, y: -self.y, z: -self.z }
 	}
 }
 
 impl Add for Vec3 {
 	type Output = Self;
 	fn add(self, other: Self) -> Self::Output {
-		Self {
-			x: self.x + other.x,
-			y: self.y + other.y,
-			z: self.z + other.z,
-		}
+		Self { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
 	}
 }
 
 impl Sub for Vec3 {
 	type Output = Self;
 	fn sub(self, other: Self) -> Self::Output {
-		Self {
-			x: self.x - other.x,
-			y: self.y - other.y,
-			z: self.z - other.z,
-		}
+		Self { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z }
 	}
 }
 
 impl Mul for Vec3 {
 	type Output = Self;
 	fn mul(self, other: Self) -> Self::Output {
-		Self {
-			x: self.x * other.x,
-			y: self.y * other.y,
-			z: self.z * other.z,
-		}
+		Self { x: self.x * other.x, y: self.y * other.y, z: self.z * other.z }
 	}
 }
 
 impl Mul<f64> for Vec3 {
 	type Output = Self;
 	fn mul(self, f: f64) -> Self::Output {
-		Self {
-			x: self.x * f,
-			y: self.y * f,
-			z: self.z * f,
-		}
+		Self { x: self.x * f, y: self.y * f, z: self.z * f }
 	}
 }
 
 impl Div for Vec3 {
 	type Output = Self;
 	fn div(self, other: Self) -> Self::Output {
-		Self {
-			x: self.x / other.x,
-			y: self.y / other.y,
-			z: self.z / other.z,
-		}
+		Self { x: self.x / other.x, y: self.y / other.y, z: self.z / other.z }
 	}
 }
 
 impl Div<f64> for Vec3 {
 	type Output = Self;
 	fn div(self, f: f64) -> Self::Output {
-		Self {
-			x: self.x / f,
-			y: self.y / f,
-			z: self.z / f,
-		}
+		Self { x: self.x / f, y: self.y / f, z: self.z / f }
 	}
 }
 
