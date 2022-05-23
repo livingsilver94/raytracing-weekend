@@ -11,13 +11,16 @@ fn sky_color(ray: &Ray) -> Color {
 	Color::new(1.0, 1.0, 1.0) * (1.0 - t) + Color::new(0.5, 0.7, 1.0) * t
 }
 
-fn hit_sphere(center: &Vec3, radius: f64, ray: &Ray) -> bool {
+fn hit_sphere(center: &Vec3, radius: f64, ray: &Ray) -> Option<f64> {
 	let oc = ray.orig - *center;
 	let a = ray.dir.dot(&ray.dir);
 	let b = 2.0 * oc.dot(&ray.dir);
 	let c = oc.dot(&oc) - radius * radius;
 	let discriminant = b * b - 4.0 * a * c;
-	discriminant > 0.0
+	if discriminant < 0.0 {
+		return None;
+	}
+	Some((-b - discriminant.sqrt()) / (2.0 * a))
 }
 
 fn main() {
@@ -49,11 +52,13 @@ fn main() {
 				orig: Vec3::origin(),
 				dir: lower_left_corner + horizontal * u + vertical * v,
 			};
-			let color = if hit_sphere(&Vec3 { x: 0.0, y: 0.0, z: -1.0 }, 0.5, &ray) {
-				Color::new(1.0, 0.0, 0.0).rgb()
+			let color = if let Some(t) = hit_sphere(&Vec3 { x: 0.0, y: 0.0, z: -1.0 }, 0.5, &ray) {
+				let normal = (ray.at(t) - Vec3 { x: 0.0, y: 0.0, z: -1.0 }).unit();
+				Color { r: normal.x + 1.0, g: normal.y + 1.0, b: normal.z + 1.0 } * 0.5
 			} else {
-				sky_color(&ray).rgb()
-			};
+				sky_color(&ray)
+			}
+			.rgb();
 			println!("{} {} {}", color[0], color[1], color[2]);
 		}
 	}
