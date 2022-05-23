@@ -13,14 +13,14 @@ fn sky_color(ray: &Ray) -> Color {
 
 fn hit_sphere(center: &Vec3, radius: f64, ray: &Ray) -> Option<f64> {
 	let oc = ray.orig - *center;
-	let a = ray.dir.dot(&ray.dir);
-	let b = 2.0 * oc.dot(&ray.dir);
-	let c = oc.dot(&oc) - radius * radius;
-	let discriminant = b * b - 4.0 * a * c;
+	let a = ray.dir.len_squared();
+	let half_b = oc.dot(&ray.dir);
+	let c = oc.len_squared() - radius * radius;
+	let discriminant = half_b * half_b - a * c;
 	if discriminant < 0.0 {
 		return None;
 	}
-	Some((-b - discriminant.sqrt()) / (2.0 * a))
+	Some((-half_b - discriminant.sqrt()) / a)
 }
 
 fn main() {
